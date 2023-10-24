@@ -21,6 +21,7 @@ public class Main {
         switch (taskNumber) {
             case 1      -> out.println(day1Count());
             case 2      -> out.println(day1CountV2());
+            case 3      -> out.println(day2Count());
             default     -> out.println("task not found");
         }
     }
@@ -70,5 +71,30 @@ public class Main {
             out.println(e.getMessage());
         }
         return count;
+    }
+
+    public static int day2Count() {
+        Path path = Paths.get("./src/main/resources/Day2/input.txt");
+        File inputFile = new File(path.toUri());
+        int horizontalPos = 0;
+        int depthPos = 0;
+        try (Scanner scanner = new Scanner(inputFile, StandardCharsets.UTF_8)) {
+            while (scanner.hasNext()) {
+                String[] command = scanner.nextLine().split(" ");
+                int step = Integer.parseInt(command[1]);
+                switch (command[0]) {
+                    case "forward"  -> horizontalPos += step;
+                    case "down"     -> depthPos += step;
+                    case "up"       -> {
+                        if ((depthPos - step) > 0) {
+                            depthPos -= step;
+                        } else depthPos = 0;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            out.println(e.getMessage());
+        }
+        return horizontalPos * depthPos;
     }
 }
