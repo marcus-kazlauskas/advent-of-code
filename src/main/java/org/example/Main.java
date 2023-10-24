@@ -22,6 +22,7 @@ public class Main {
             case 1      -> out.println(day1Count());
             case 2      -> out.println(day1CountV2());
             case 3      -> out.println(day2Count());
+            case 4      -> out.println(day2CountV2());
             default     -> out.println("task not found");
         }
     }
@@ -90,6 +91,36 @@ public class Main {
                             depthPos -= step;
                         } else depthPos = 0;
                     }
+                }
+            }
+        } catch (IOException e) {
+            out.println(e.getMessage());
+        }
+        return horizontalPos * depthPos;
+    }
+
+    public static int day2CountV2() {
+        String path = "./src/main/resources/Day2/input.txt";
+        return day2CountV2(path);
+    }
+
+    public static int day2CountV2(String path) {
+        Path inputPath = Paths.get(path);
+        File inputFile = new File(inputPath.toUri());
+        int horizontalPos = 0;
+        int depthPos = 0;
+        int aim = 0;
+        try (Scanner scanner = new Scanner(inputFile, StandardCharsets.UTF_8)) {
+            while (scanner.hasNext()) {
+                String[] command = scanner.nextLine().split(" ");
+                int step = Integer.parseInt(command[1]);
+                switch (command[0]) {
+                    case "forward"  -> {
+                        horizontalPos += step;
+                        depthPos += aim * step;
+                    }
+                    case "down"     -> aim += step;
+                    case "up"       -> aim -= step;
                 }
             }
         } catch (IOException e) {
