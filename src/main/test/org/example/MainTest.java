@@ -7,4 +7,9 @@ public class MainTest {
     public void testDay2CountV2() {
         assert Main.day2CountV2("./src/main/resources/Day2/input_test.txt") == 900;
     }
+
+    @Test
+    public void testDay3Count() {
+        assert Main.day3Count("./src/main/resources/Day3/input_test.txt") == 198;
+    }
 }
