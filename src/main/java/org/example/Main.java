@@ -24,6 +24,7 @@ public class Main {
             case 3      -> out.println(day2Count());
             case 4      -> out.println(day2CountV2());
             case 5      -> out.println(day3Count());
+            case 6      -> out.println(day3CountV2());
             default     -> out.println("task not found");
         }
     }
@@ -166,8 +167,82 @@ public class Main {
 
     public static void checkBits(char[] bits, int length, int[] counter0, int[] counter1) {
         for (int i = 0; i < length; i++) {
-            if (bits[i] == '0') counter0[i] += 1;
-            if (bits[i] == '1') counter1[i] += 1;
+            if (bits[i] == '0') counter0[i]++;
+            if (bits[i] == '1') counter1[i]++;
+        }
+    }
+
+    public static int day3CountV2() {
+        final String path = "./src/main/resources/Day3/input.txt";
+        return day3CountV2(path);
+    }
+
+    public static int day3CountV2(String path) {
+        Path inputPath = Paths.get(path);
+        File inputFile = new File(inputPath.toUri());
+        int length = 1;
+        List<char[]> oxygen = new LinkedList<>();
+        List<char[]> co2 = new LinkedList<>();
+        try (Scanner scanner = new Scanner(inputFile, StandardCharsets.UTF_8)) {
+            char[] bits = scanner.nextLine().toCharArray();
+            oxygen.add(bits);
+            co2.add(bits);
+            length = bits.length;
+            while (scanner.hasNext()) {
+                bits = scanner.nextLine().toCharArray();
+                oxygen.add(bits);
+                co2.add(bits);
+            }
+        } catch (IOException e) {
+            out.println(e.getMessage());
+        }
+
+        int i = 0;
+        int j;
+        char oxygenCriteria;
+        while (oxygen.size() > 1 && i < length) {
+            j = 0;
+            oxygenCriteria = bitCriteria(oxygen, i, "oxygen");
+            while (j < oxygen.size()) {
+                char[] bits = oxygen.get(j);
+                if (bits[i] != oxygenCriteria) oxygen.remove(j);
+                else j++;
+            }
+            i++;
+        }
+
+        i = 0;
+        char co2Criteria;
+        while (co2.size() > 1 && i < length) {
+            j = 0;
+            co2Criteria = bitCriteria(co2, i, "co2");
+            while (j < co2.size()) {
+                char[] bits = co2.get(j);
+                if (bits[i] != co2Criteria) co2.remove(j);
+                else j++;
+            }
+            i++;
+        }
+
+        return Integer.valueOf(new String(oxygen.get(0)), 2) *
+                Integer.valueOf(new String(co2.get(0)), 2);
+    }
+
+    public static char bitCriteria(List<char[]> allBits, int i, String nameRating) {
+        int counter = 0;
+        for (char[] bits: allBits) {
+            if (bits[i] == '0') counter++;
+        }
+        switch (nameRating) {
+            case "oxygen" -> {
+                return (counter > (allBits.size() / 2)) ? '0' : '1';
+            }
+            case "co2" -> {
+                return (counter > (allBits.size() / 2)) ? '1' : '0';
+            }
+            default -> {
+                return '0';
+            }
         }
     }
 }
