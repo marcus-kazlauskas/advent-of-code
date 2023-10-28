@@ -22,4 +22,12 @@ public class MainTest {
                 Main.day3CountV2("./src/main/resources/Day3/input_test.txt")
         );
     }
+
+    @Test
+    public void testDay4Count() {
+        assertEquals(
+                4512,
+                Day4.day4Count("./src/main/resources/Day4/input_test.txt")
+        );
+    }
 }
