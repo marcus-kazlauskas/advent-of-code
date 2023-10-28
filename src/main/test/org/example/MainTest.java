@@ -30,4 +30,12 @@ public class MainTest {
                 Day4.day4Count("./src/main/resources/Day4/input_test.txt")
         );
     }
+
+    @Test
+    public void testDay4CountV2() {
+        assertEquals(
+                1924,
+                Day4.day4CountV2("./src/main/resources/Day4/input_test.txt")
+        );
+    }
 }

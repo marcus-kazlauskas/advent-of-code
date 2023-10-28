@@ -141,4 +141,48 @@ public class Day4 {
             out.println();
         }
     }
+
+    public static int day4CountV2() {
+        final String path = "./src/main/resources/Day4/input.txt";
+        return day4CountV2(path);
+    }
+
+    public static int day4CountV2(String path) {
+        Path inputPath = Paths.get(path);
+        File inputFile = new File(inputPath.toUri());
+        int[] numbers = {0};
+        List<int[][]> boards = new ArrayList<>();
+        try (Scanner scanner = new Scanner(inputFile, StandardCharsets.UTF_8)) {
+            numbers = saveNumbers(scanner);
+            saveBoards(scanner, boards);
+        } catch (IOException e) {
+            out.println(e.getMessage());
+        }
+        return checkBoardsV2(boards, numbers);
+    }
+
+    private static int checkBoardsV2(List<int[][]> boards, int[] numbers) {
+        for (int j : numbers) {
+            out.printf("%d ", j);
+        }
+        out.println();
+        for (int number: numbers) {
+            out.printf("number=%d\n", number);
+            for (int i = 0; i < boards.size(); i++) {
+                out.printf("board%d\n", i + 1);
+                int[][] board = boards.get(i);
+                printBoard(board, "before");
+                markNumber(board, number);
+                printBoard(board, "after");
+                if (checkRows(board) || checkColumns(board)) {
+                    if (boards.size() == 1) return sumOfNumbers(board) * number;
+                    else {
+                        boards.remove(i);
+                        i--;
+                    }
+                } else boards.set(i, board);
+            }
+        }
+        return 0;
+    }
 }

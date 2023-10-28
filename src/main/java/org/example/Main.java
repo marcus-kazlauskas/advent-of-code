@@ -26,7 +26,7 @@ public class Main {
             case 5      -> out.println(day3Count());
             case 6      -> out.println(day3CountV2());
             case 7      -> out.println(Day4.day4Count());
-            case 8      -> out.println();
+            case 8      -> out.println(Day4.day4CountV2());
             default     -> out.println("task not found");
         }
     }
