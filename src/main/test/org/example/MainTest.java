@@ -62,4 +62,12 @@ public class MainTest {
                 Day10.count("./src/main/resources/Day10/input_test.txt")
         );
     }
+
+    @Test
+    public void testDay10CountV2() {
+        assertEquals(
+                288957,
+                Day10.countV2("./src/main/resources/Day10/input_test.txt")
+        );
+    }
 }
