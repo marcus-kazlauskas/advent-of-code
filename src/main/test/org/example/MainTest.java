@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.Test;
 
+import static org.example.Day25.*;
 import static org.junit.Assert.assertEquals;
 
 public class MainTest {
@@ -74,8 +75,19 @@ public class MainTest {
     @Test
     public void testDay25Count() {
         assertEquals(
-                0,
+                58,
                 Day25.count("./src/main/resources/Day25/input_test.txt")
         );
+    }
+
+    @Test
+    public void testDay25PrintSteps() {
+        final int N = 10;
+        char[][] situation = saveState("./src/main/resources/Day25/input_test.txt");
+        boolean step;
+        for (int i = 1; i <= N; i++) {
+            step = nextStep(situation);
+            printState(i, situation);
+        }
     }
 }
