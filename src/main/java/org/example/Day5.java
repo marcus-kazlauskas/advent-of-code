@@ -10,12 +10,12 @@ import java.util.*;
 import static java.lang.System.out;
 
 public class Day5 {
-    public static int day5Count() {
+    public static int count() {
         final String path = "./src/main/resources/Day5/input.txt";
-        return day5Count(path, 1000);
+        return count(path, 1000);
     }
 
-    public static int day5Count(String path, int sizeOfDiagram) {
+    public static int count(String path, int sizeOfDiagram) {
         Path inputPath = Paths.get(path);
         File inputFile = new File(inputPath.toUri());
         String[] lineCoordinates;
@@ -102,12 +102,12 @@ public class Day5 {
         out.println();
     }
 
-    public static int day5CountV2() {
+    public static int countV2() {
         final String path = "./src/main/resources/Day5/input.txt";
-        return day5CountV2(path, 1000);
+        return countV2(path, 1000);
     }
 
-    public static int day5CountV2(String path, int sizeOfDiagram) {
+    public static int countV2(String path, int sizeOfDiagram) {
         Path inputPath = Paths.get(path);
         File inputFile = new File(inputPath.toUri());
         String[] lineCoordinates;

@@ -8,19 +8,19 @@ import static org.junit.Assert.assertEquals;
 public class MainTest {
     @Test
     public void testDay2CountV2() {
-        assert Main.day2CountV2("./src/main/resources/Day2/input_test.txt") == 900;
+        assert Day2.countV2("./src/main/resources/Day2/input_test.txt") == 900;
     }
 
     @Test
     public void testDay3Count() {
-        assert Main.day3Count("./src/main/resources/Day3/input_test.txt") == 198;
+        assert Day3.count("./src/main/resources/Day3/input_test.txt") == 198;
     }
 
     @Test
     public void testDay3CountV2() {
         assertEquals(
                 230,
-                Main.day3CountV2("./src/main/resources/Day3/input_test.txt")
+                Day3.countV2("./src/main/resources/Day3/input_test.txt")
         );
     }
 
@@ -28,7 +28,7 @@ public class MainTest {
     public void testDay4Count() {
         assertEquals(
                 4512,
-                Day4.day4Count("./src/main/resources/Day4/input_test.txt")
+                Day4.count("./src/main/resources/Day4/input_test.txt")
         );
     }
 
@@ -36,7 +36,7 @@ public class MainTest {
     public void testDay4CountV2() {
         assertEquals(
                 1924,
-                Day4.day4CountV2("./src/main/resources/Day4/input_test.txt")
+                Day4.countV2("./src/main/resources/Day4/input_test.txt")
         );
     }
 
@@ -44,7 +44,7 @@ public class MainTest {
     public void testDay5Count() {
         assertEquals(
                 5,
-                Day5.day5Count("./src/main/resources/Day5/input_test.txt", 10)
+                Day5.count("./src/main/resources/Day5/input_test.txt", 10)
         );
     }
 
@@ -52,7 +52,7 @@ public class MainTest {
     public void testDay5CountV2() {
         assertEquals(
                 12,
-                Day5.day5CountV2("./src/main/resources/Day5/input_test.txt", 10)
+                Day5.countV2("./src/main/resources/Day5/input_test.txt", 10)
         );
     }
 

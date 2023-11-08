@@ -12,12 +12,12 @@ import java.util.Scanner;
 import static java.lang.System.out;
 
 public class Day4 {
-    public static int day4Count() {
+    public static int count() {
         final String path = "./src/main/resources/Day4/input.txt";
-        return day4Count(path);
+        return count(path);
     }
 
-    public static int day4Count(String path) {
+    public static int count(String path) {
         Path inputPath = Paths.get(path);
         File inputFile = new File(inputPath.toUri());
         int[] numbers = {0};
@@ -142,12 +142,12 @@ public class Day4 {
         }
     }
 
-    public static int day4CountV2() {
+    public static int countV2() {
         final String path = "./src/main/resources/Day4/input.txt";
-        return day4CountV2(path);
+        return countV2(path);
     }
 
-    public static int day4CountV2(String path) {
+    public static int countV2(String path) {
         Path inputPath = Paths.get(path);
         File inputFile = new File(inputPath.toUri());
         int[] numbers = {0};
