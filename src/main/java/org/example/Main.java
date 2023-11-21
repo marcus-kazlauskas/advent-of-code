@@ -22,7 +22,7 @@ public class Main {
             case 8      -> out.println(Day4.countV2());
             case 9      -> out.println(Day5.count());
             case 10     -> out.println(Day5.countV2());
-//            case 11     -> out.println(Day6.count());
+            case 11     -> out.println(Day6.count());
 //            case 12     -> out.println(Day6.countV2());
 //            case 13     -> out.println(Day7.count());
 //            case 14     -> out.println(Day7.countV2());

@@ -2,6 +2,8 @@ package org.example;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.example.Day25.*;
 import static org.junit.Assert.assertEquals;
 
@@ -53,6 +55,49 @@ public class MainTest {
         assertEquals(
                 12,
                 Day5.countV2("./src/main/resources/Day5/input_test.txt", 10)
+        );
+    }
+
+    public static String DAY6_PATH = "./src/main/resources/Day6/input_test.txt";
+
+    @Test
+    public void testDay6Count() {
+        assertEquals(
+                26,
+                Day6.count(DAY6_PATH, 18)
+        );
+    }
+
+    @Test
+    public void testDay6CountSeparately() {
+        Integer[] count = getCountArray();
+        Integer[] expected = new Integer[count.length];
+        expected[0] = 5;
+        expected[1] = 4;
+        expected[2] = 5;
+        expected[3] = 7;
+        expected[4] = 5;
+        System.out.printf("expected -- %s\n", Arrays.toString(expected));
+        System.out.printf("actual -- %s\n", Arrays.toString(count));
+        assert Arrays.deepEquals(expected, count);
+    }
+
+    public static Integer[] getCountArray() {
+        int[] school = Day6.readDaysToBreeding(DAY6_PATH);
+        System.out.printf("school -- %s\n", Arrays.toString(school));
+        Integer[] count = new Integer[school.length];
+        for (int i = 0; i < school.length; i++) {
+            count[i] = Day6.countAllFish(18, school[i]);
+            System.out.println();
+        }
+        return count;
+    }
+
+    @Test
+    public void testDay6CountFull() {
+        assertEquals(
+                5934,
+                Day6.count(DAY6_PATH, Day6.DAYS)
         );
     }
 
