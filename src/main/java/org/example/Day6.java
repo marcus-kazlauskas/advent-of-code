@@ -11,6 +11,7 @@ import static java.lang.System.out;
 
 public class Day6 {
     public static final int DAYS = 80;
+    public static final int DAYS_FOREVER = 256;
     public static final int CYCLE = 7;
     public static final int DAYS_TO_BREEDING = 8;
 
@@ -20,12 +21,19 @@ public class Day6 {
     }
 
     public static int count(String path, int lifetime) {
+        int[] referenceCounts = new int[CYCLE];
+        for (int i = 0; i < CYCLE; i++) {
+            int referenceCount = countAllFish(lifetime, i);
+            referenceCounts[i] = referenceCount;
+            out.printf("%d days to breeding - %d babies\n", i, referenceCount);
+        }
+
         int[] school = readDaysToBreeding(path);
         int count = 0;
         out.println(Arrays.toString(school));
         out.println();
         for (int fish: school) {
-            count += countAllFish(lifetime, fish);
+            count += referenceCounts[fish];
         }
         return count;
     }
@@ -71,12 +79,12 @@ public class Day6 {
 
     public static int countFish(int fishLifetime, int daysToBreeding) {
         int count = countBabies(fishLifetime, daysToBreeding);
-        out.printf("countBabies=%d\n", count);
+//        out.printf("countBabies=%d\n", count);
         if (count > 0) {
             int[] lifetimes = getLifetimes(fishLifetime, daysToBreeding, count);
             for (int lifetime: lifetimes) {
                 int growth = countFish(lifetime, DAYS_TO_BREEDING);
-                out.printf("lifetime=%d, growth=%d\n", lifetime, growth);
+//                out.printf("lifetime=%d, growth=%d\n", lifetime, growth);
                 count += growth;
             }
         }
@@ -85,5 +93,44 @@ public class Day6 {
 
     public static int countAllFish(int fishLifeTime, int daysToBreeding) {
         return countFish(fishLifeTime, daysToBreeding) + 1;
+    }
+
+    public static long countV2() {
+        final String path = "./src/main/resources/Day6/input.txt";
+        return countV2(path, DAYS_FOREVER);
+    }
+
+    public static long countV2(String path, int lifetime) {
+        long[] referenceCounts = new long[CYCLE];
+        for (int i = 0; i < CYCLE; i++) {
+            long referenceCount = countAllFishV2(lifetime, i);
+            referenceCounts[i] = referenceCount;
+            out.printf("%d days to breeding - %d babies\n", i, referenceCount);
+        }
+
+        int[] school = readDaysToBreeding(path);
+        long count = 0;
+        for (int fish: school) {
+            count += referenceCounts[fish];
+        }
+        return count;
+    }
+
+    public static long countFishV2(int fishLifetime, int daysToBreeding) {
+        int countBabies = countBabies(fishLifetime, daysToBreeding);
+        long countAll = 0;
+        if (countBabies > 0) {
+            countAll = countBabies;
+            int[] lifetimes = getLifetimes(fishLifetime, daysToBreeding, countBabies);
+            for (int lifetime: lifetimes) {
+                long growth = countFishV2(lifetime, DAYS_TO_BREEDING);
+                countAll += growth;
+            }
+        }
+        return countAll;
+    }
+
+    public static long countAllFishV2(int fishLifeTime, int daysToBreeding) {
+        return countFishV2(fishLifeTime, daysToBreeding) + 1;
     }
 }

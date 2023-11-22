@@ -94,10 +94,26 @@ public class MainTest {
     }
 
     @Test
-    public void testDay6CountFull() {
+    public void testDay6CountDays() {
         assertEquals(
                 5934,
                 Day6.count(DAY6_PATH, Day6.DAYS)
+        );
+    }
+
+    @Test
+    public void testDay6CountV2Days() {
+        assertEquals(
+                5934L,
+                Day6.countV2(DAY6_PATH, Day6.DAYS)
+        );
+    }
+
+    @Test
+    public void testDay6CountV2DaysForever() {
+        assertEquals(
+                26984457539L,
+                Day6.countV2(DAY6_PATH, Day6.DAYS_FOREVER)
         );
     }
 
