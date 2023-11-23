@@ -126,6 +126,14 @@ public class MainTest {
     }
 
     @Test
+    public void testDay7CountV2() {
+        assertEquals(
+                168,
+                Day7.countV2("./src/main/resources/Day7/input_test.txt")
+        );
+    }
+
+    @Test
     public void testDay10Count() {
         assertEquals(
                 26397,
