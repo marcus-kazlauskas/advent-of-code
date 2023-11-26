@@ -183,41 +183,4 @@ public class Day8 {
             return realDigit;
         }
     }
-
-//    public static Map<Character, Character> dictionary(String[] digits) {
-//        String one = "oo";
-//        String seven = "sss";
-//        String four = "ffff";
-//        LinkedList<String> twoThreeFive = new LinkedList<>();
-//        LinkedList<String> zeroSixNine = new LinkedList<>();
-//        String eight = "eeeeeee";
-//        for (String digit: digits) {
-//            switch (digit.length()) {
-//                case 2 -> one = digit;
-//                case 3 -> seven = digit;
-//                case 4 -> four = digit;
-//                case 5 -> twoThreeFive.add(digit);
-//                case 6 -> zeroSixNine.add(digit);
-//                case 7 -> eight = digit;
-////                default -> out.println("Digit cannot contain more than 7 symbols!");
-//            }
-//        }
-//        Map<Character, Character> dictionary = new HashMap<>();
-//        dictionary.put('a', aSegment(one, seven));
-//        return dictionary;
-//    }
-
-//    public static char aSegment(String one, String seven) {
-//        char aSegment = 'a';
-//        char[] oneArray = one.toCharArray();
-//        char[] sevenArray = seven.toCharArray();
-//        Arrays.sort(oneArray);
-//        Arrays.sort(sevenArray);
-//        int i = 0;
-//        while (i < oneArray.length && oneArray[i] == sevenArray[i]) {
-//            i++;
-//        }
-//        aSegment = sevenArray[i];
-//        return aSegment;
-//    }
 }
