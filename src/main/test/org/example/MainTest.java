@@ -8,6 +8,8 @@ import static org.example.Day25.*;
 import static org.junit.Assert.assertEquals;
 
 public class MainTest {
+    public static final String INPUT_TEST_PATH = "./src/main/resources/%s/input_test.txt";
+
     @Test
     public void testDay2CountV2() {
         assert Day2.countV2("./src/main/resources/Day2/input_test.txt") == 900;
@@ -137,7 +139,15 @@ public class MainTest {
     public void testDay8Count() {
         assertEquals(
                 26,
-                Day8.count("./src/main/resources/Day8/input_test.txt")
+                Day8.count(INPUT_TEST_PATH.formatted("Day8"))
+        );
+    }
+
+    @Test
+    public void testDay8CountV2() {
+        assertEquals(
+                61229,
+                Day8.countV2(INPUT_TEST_PATH.formatted("Day8"))
         );
     }
 

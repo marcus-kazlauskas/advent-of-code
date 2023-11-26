@@ -6,6 +6,7 @@ import static java.lang.System.in;
 import java.util.Scanner;
 
 public class Main {
+    public static final String INPUT_PATH = "./src/main/resources/%s/input.txt";
     public static void main(String[] args) {
         int taskNumber;
         try (Scanner userInput = new Scanner(in)) {
@@ -27,7 +28,7 @@ public class Main {
             case 13     -> out.println(Day7.count());
             case 14     -> out.println(Day7.countV2());
             case 15     -> out.println(Day8.count());
-//            case 16     -> out.println(Day8.countV2());
+            case 16     -> out.println(Day8.countV2());
 //            case 17     -> out.println(Day9.count());
 //            case 18     -> out.println(Day9.countV2());
             case 19     -> out.println(Day10.count());
