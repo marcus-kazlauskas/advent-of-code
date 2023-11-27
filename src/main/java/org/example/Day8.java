@@ -65,24 +65,7 @@ public class Day8 {
     }
 
     public static int countV2(String path) {
-        LinkedList<List<Set<Character>>> digitsList = new LinkedList<>();
-        LinkedList<List<Set<Character>>> outputList = new LinkedList<>();
-        readValuesV2(path, digitsList, outputList);
         int summary = 0;
-        int length = digitsList.size();
-        for (int i = 0; i < length; i++) {
-            List<Set<Character>> output = outputList.poll();
-            out.println(output);
-            summary += realNumber(digitsList.poll(), output);
-        }
-        return summary;
-    }
-
-    private static void readValuesV2(
-            String path,
-            LinkedList<List<Set<Character>>> digitsList,
-            LinkedList<List<Set<Character>>> outputList
-    ) {
         Path inputPath = Paths.get(path);
         File inputFile = new File(inputPath.toUri());
         try (Scanner scanner = new Scanner(inputFile, StandardCharsets.UTF_8)) {
@@ -99,14 +82,13 @@ public class Day8 {
                     if (i < DIGITS_NUMBER) digits.add(i, segments);
                     else output.add(i - DIGITS_NUMBER, segments);
                 }
-                digitsList.add(digits);
-                outputList.add(output);
+                summary += realNumber(digits, output);
             }
             out.println("All elements collected");
         } catch (Exception e) {
-            out.print("ERROR: ");
             out.println(e.getMessage());
         }
+        return summary;
     }
 
     public static int realNumber(List<Set<Character>> digits, List<Set<Character>> output) {
@@ -120,9 +102,6 @@ public class Day8 {
     }
 
     private static class Dictionary {
-        /**
-         * Если бы я сделал построчную обработку, то не пришлось бы писать этот класс!
-         */
         Set<Character> one = new HashSet<>();
         Set<Character> four = new HashSet<>();
 
