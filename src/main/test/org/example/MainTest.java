@@ -152,6 +152,14 @@ public class MainTest {
     }
 
     @Test
+    public void testDay9Count() {
+        assertEquals(
+                15,
+                Day9.count(INPUT_TEST_PATH.formatted("Day9"))
+        );
+    }
+
+    @Test
     public void testDay10Count() {
         assertEquals(
                 26397,

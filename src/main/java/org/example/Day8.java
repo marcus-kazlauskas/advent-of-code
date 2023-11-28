@@ -12,7 +12,7 @@ import static java.lang.System.out;
 public class Day8 {
     public static final int DIGITS_NUMBER = 10;
     public static final int OUTPUT_LENGTH = 4;
-    public static final int LINE_LENGTH = 14;
+    public static final int LINE_LENGTH = DIGITS_NUMBER + OUTPUT_LENGTH;
 
     public static int count() {
         final String path = Main.INPUT_PATH.formatted("Day8");
@@ -73,8 +73,8 @@ public class Day8 {
                 String[] values = scanner.nextLine().split("( \\| )|( )");
 //                out.println(Arrays.toString(values));
 
-                List<Set<Character>> digits = new ArrayList<>(LINE_LENGTH);
-                List<Set<Character>> output = new ArrayList<>(LINE_LENGTH);
+                List<Set<Character>> digits = new ArrayList<>(DIGITS_NUMBER);
+                List<Set<Character>> output = new ArrayList<>(OUTPUT_LENGTH);
                 for (int i = 0; i < LINE_LENGTH; i++) {
                     Set<Character> segments = values[i].chars()
                             .mapToObj(c -> (char) c).collect(Collectors.toSet());
