@@ -60,7 +60,7 @@ public class Day9 {
         return line.chars().map(x -> x - '0').toArray();
     }
 
-    private static int firstLine(Scanner scanner, LinkedList<int[]> threeLines) {
+    private static int[] firstLine(Scanner scanner, LinkedList<int[]> threeLines) {
         String line = scanner.nextLine();
         int[] newLine = toIntArray(line);
         int[] emptyLine = new int[line.length()];
@@ -68,7 +68,9 @@ public class Day9 {
         threeLines.add(emptyLine);
         threeLines.add(emptyLine);
         threeLines.add(newLine);
-        return line.length();
+        int[] currentBasins = new int[line.length()];
+        Arrays.fill(currentBasins, EMPTY_ID);
+        return currentBasins;
     }
 
     private static void nextLine(Scanner scanner, LinkedList<int[]> threeLines) {
@@ -109,19 +111,16 @@ public class Day9 {
         Map<Integer, Integer> basinsSizes = new HashMap<>();
         int multipliedSizes = 0;
         try (Scanner scanner = new Scanner(inputFile)) {
-            int length = firstLine(scanner, heights);
-            int i = 0;
-            //  currentBasins[i] = (id бассейна для каждой точки в строке)
-            int[] currentBasins = new int[length];
-            Arrays.fill(currentBasins, EMPTY_ID);
+            //  currentBasins[i] = id бассейна для каждой точки в строке
+            int[] currentBasins = firstLine(scanner, heights);
+            int lineNumber = 0;
             while (scanner.hasNext()) {
                 nextLine(scanner, heights);
-                out.println(i);
-                i++;
+                lineNumber = print(lineNumber);
                 checkLine(heights, currentBasins, basinsSizes);
             }
             lastLine(heights);
-            out.println(i);
+            print(lineNumber);
             checkLine(heights, currentBasins, basinsSizes);
             multipliedSizes = multiplySizes(basinsSizes);
         } catch (Exception e) {
@@ -129,6 +128,11 @@ public class Day9 {
             out.println(e.getMessage());
         }
         return multipliedSizes;
+    }
+
+    private static int print(int lineNumber) {
+        out.println(lineNumber);
+        return lineNumber + 1;
     }
 
     private static void checkLine(
