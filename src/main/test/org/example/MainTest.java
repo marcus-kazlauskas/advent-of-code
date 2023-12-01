@@ -158,6 +158,13 @@ public class MainTest {
                 Day9.count(INPUT_TEST_PATH.formatted("Day9"))
         );
     }
+    @Test
+    public void testDay9CountV2() {
+        assertEquals(
+                1134,
+                Day9.countV2(INPUT_TEST_PATH.formatted("Day9"))
+        );
+    }
 
     @Test
     public void testDay10Count() {
